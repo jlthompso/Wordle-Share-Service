@@ -1,6 +1,7 @@
+###
 POST http://localhost:3000/convsvc HTTP/1.1
-
 content-type: application/json
+
 {
     "word": ["F", "L", "A", "S", "K"],
     "conditions": [[0, 0, 0, 1, 2],

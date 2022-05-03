@@ -2,13 +2,41 @@ var express = require('express');
 const res = require('express/lib/response');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
+/* Convert gameboard string. */
 router.post('/convsvc', function(req, res, next) {
-  res.send('green: \u{1F7E9} clear: \u{2B1C} yellow: \u{1F7E8}');
+  let output = "";
+
+  ({word, conditions} = req.body);
+
+  word.forEach(c => {
+    output += c;
+  });
+  output += '\n';
+
+  conditions.forEach(row => {
+    row.forEach(cell => {
+      switch (cell) {
+        case 0:
+          // clear
+          output += '\u{2B1C}';
+          break;
+        case 1:
+          // yellow
+          output += '\u{1F7E8}';
+          break;
+        case 2:
+          // green
+          output += '\u{1F7E9}';
+          break;
+        default:
+          res.send("Invalid gameboard string.");
+          return;
+      }
+    });
+    output += '\n';
+  });
+
+  res.send(output);
 });
 
 module.exports = router;
