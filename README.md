@@ -5,4 +5,5 @@ install dependencies:
 > npm install
 
 run the app:
+> npm start
 > SET DEBUG=wordle-share-service:* & npm start
