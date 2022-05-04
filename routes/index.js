@@ -8,13 +8,15 @@ router.post('/convsvc', function(req, res, next) {
 
   ({word, conditions} = req.body);
 
-  word.forEach(c => {
+  // convert puzzle solution to string
+  for (c of word) {
     output += c;
-  });
+  }
   output += '\n';
 
-  conditions.forEach(row => {
-    row.forEach(cell => {
+  // convert user guesses to string
+  for (row of conditions) {
+    for (cell of row) {
       switch (cell) {
         case 0:
           // clear
@@ -32,9 +34,10 @@ router.post('/convsvc', function(req, res, next) {
           res.send("Invalid gameboard string.");
           return;
       }
-    });
+    }
     output += '\n';
-  });
+  }
+  output = output.slice(0, -1);  // remove final linefeed
 
   res.send(output);
 });

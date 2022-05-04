@@ -11,3 +11,17 @@ content-type: application/json
                    [2, 2, 1, 1, 1],
                    [2, 2, 2, 2, 2]]
 }
+
+###
+POST http://localhost:3000/convsvc HTTP/1.1
+content-type: application/json
+
+{
+    "word": ["F", "L", "A", "S", "K"],
+    "conditions": [[1, 1, 1, 1, 1],
+                   [2, 0, 0, 0, 2],
+                   [0, 2, 0, 2, 0],
+                   [0, 0, 2, 0, 0],
+                   [0, 2, 0, 2, 0],
+                   [2, 0, 0, 0, 2]]
+}
