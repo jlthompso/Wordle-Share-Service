@@ -31,6 +31,7 @@ Example output:
   🟩🟩🟨🟨🟨
   🟩🟩🟩🟩🟩
 
+Microservice port can be modified in bin/www
 
 install dependencies:
 > npm install
